@@ -1,0 +1,87 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context="id.kido1611.rccontroller.MainActivityFragment"
+    tools:showIn="@layout/activity_main">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Control"
+        android:id="@+id/controlText"/>
+    <Button
+        android:layout_below="@id/controlText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/btnSpeed3"
+        android:text="Speed 3"
+        style="@style/Widget.AppCompat.Button.Colored"/>
+
+    <Button
+        android:layout_below="@id/btnSpeed3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/btnSpeed2"
+        android:text="Speed 2"
+        style="@style/Widget.AppCompat.Button.Colored"/>
+
+    <Button
+        android:layout_below="@id/btnSpeed2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/btnSpeed1"
+        android:text="Speed 1"
+        style="@style/Widget.AppCompat.Button.Colored"/>
+
+    <Button
+        android:layout_below="@id/btnSpeed1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/btnNetral"
+        android:text="Netral"
+        style="@style/Widget.AppCompat.Button.Colored"/>
+
+    <Button
+        android:layout_below="@id/btnNetral"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/btnReverse"
+        android:text="Reverse"
+        style="@style/Widget.AppCompat.Button.Colored"/>
+
+    <TextView
+        android:layout_below="@id/btnReverse"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Steering"
+        android:id="@+id/steerText"/>
+    <Button
+        android:layout_below="@id/steerText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/btnLeft"
+        android:text="Left"
+        style="@style/Widget.AppCompat.Button.Colored"/>
+
+    <Button
+        android:layout_below="@id/btnLeft"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/btnRight"
+        android:text="Right"
+        style="@style/Widget.AppCompat.Button.Colored"/>
+    <Button
+        android:layout_below="@id/btnRight"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/btnForward"
+        android:text="Forward"
+        style="@style/Widget.AppCompat.Button.Colored"/>
+
+
+</RelativeLayout>
