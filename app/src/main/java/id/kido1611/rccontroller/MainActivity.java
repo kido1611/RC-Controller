@@ -3,29 +3,28 @@ package id.kido1611.rccontroller;
 import android.bluetooth.BluetoothSocket;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.Toast;
 
-import id.kido1611.androidhub.ArduinoConnectCallback;
-import id.kido1611.androidhub.DialogBluetooth;
+import id.kido1611.arduinoconnect.ArduinoConnect;
+import id.kido1611.arduinoconnect.ArduinoConnectCallback;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity
+        implements ArduinoConnectCallback{
 
-    private BluetoothSocket mSocket = null;
-
-    public BluetoothSocket getSocket(){
-        return mSocket;
-    }
+    private ArduinoConnect mArduinoConnect;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        mArduinoConnect = new ArduinoConnect(this, getSupportFragmentManager());
+        mArduinoConnect.setCallback(this);
+
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
@@ -33,24 +32,20 @@ public class MainActivity extends AppCompatActivity {
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
-                DialogBluetooth mDialog = new DialogBluetooth();
-                mDialog.setCallback(new ArduinoConnectCallback() {
-                    @Override
-                    public void onConnect(BluetoothSocket socket) {
-                        mSocket = socket;
-                    }
-
-                    @Override
-                    public void onFailed() {
-                        mSocket = null;
-                    }
-                });
-                mDialog.show(getSupportFragmentManager(), "ArduinoHUB");
-
-                //Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG).setAction("Action", null).show();
+                mArduinoConnect.showDialog();
             }
         });
+    }
+
+    public void sendString(String s){
+        if(mArduinoConnect!=null)mArduinoConnect.sendMessage(s);
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        if(mArduinoConnect!=null)
+            mArduinoConnect.disconnected();
     }
 
     @Override
@@ -73,5 +68,30 @@ public class MainActivity extends AppCompatActivity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public void onArduinoConnected() {
+
+    }
+
+    @Override
+    public void onArduinoConnectFailed() {
+
+    }
+
+    @Override
+    public void onSerialTextReceived(String s) {
+
+    }
+
+    @Override
+    public void onBluetoothDeviceNotFound() {
+
+    }
+
+    @Override
+    public void onBluetoothFailedEnabled() {
+
     }
 }

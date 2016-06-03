@@ -86,11 +86,6 @@ public class MainActivityFragment extends Fragment {
     }
 
     private void sendCode(String code){
-        try {
-            if(((MainActivity)getActivity()).getSocket()==null) return;
-            ((MainActivity)getActivity()).getSocket().getOutputStream().write(code.getBytes());
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        ((MainActivity)getActivity()).sendString(code);
     }
 }
